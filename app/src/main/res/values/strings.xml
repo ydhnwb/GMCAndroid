@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">GMC Apps</string>
+    <string name="lewati_perkenalan">Lewati Perkenalan</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="Now_Playing">Now Playing</string>
+    <string name="Now_Playing_dec">Lebih mudah untuk mengetahui\nfilm yang sedang tampil</string>
+    <string name="pre_order_dec">Kamu tidak perlu khawatir kehabisan tiket karna\nbisa pesan untuk hari berikutnya</string>
+    <string name="pre_order">Pre - Order</string>
+    <string name="Cashlesss">Cashless</string>
+    <string name="cassless_dec">Gunakan e-wallet untuk transaksi\ntiket nonton</string>
+    <string name="sign_in">Sign In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="masuk_akun">Masuk Akun</string>
+    <string name="daftar_akun">Daftar Akun Baru</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
