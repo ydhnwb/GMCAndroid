@@ -1,5 +1,6 @@
 package com.annaalfiani.gmcapps
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.annaalfiani.gmcapps.fragments.HomeFragment
 import com.annaalfiani.gmcapps.fragments.ProfilFragment
 import com.annaalfiani.gmcapps.fragments.TicketFragment
+import com.annaalfiani.gmcapps.utils.Utilities
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,11 +23,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         if(savedInstanceState == null){
             navigation.selectedItemId = R.id.navigation_home
         }
+        Thread(Runnable {
+            if (Utilities.isFirstTime(this@MainActivity)) {
+                runOnUiThread { startActivity(Intent(this@MainActivity, IntroActivity::class.java).also {
+                    finish()
+                })}
+            }
+        }).start()
     }
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.annaalfiani.gmcapps.MainActivity
 import com.annaalfiani.gmcapps.R
-import com.annaalfiani.gmcapps.Sign_inActivity
 import kotlinx.android.synthetic.main.activity_onboarding_one.*
-import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_in.btn_daftar
-import java.time.Instant
 
 class OnboardingOneActivity : AppCompatActivity() {
 

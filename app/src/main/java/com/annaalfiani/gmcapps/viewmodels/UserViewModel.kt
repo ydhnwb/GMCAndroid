@@ -1,6 +1,5 @@
 package com.annaalfiani.gmcapps.viewmodels
 
-import android.provider.ContactsContract
 import androidx.lifecycle.ViewModel
 import com.annaalfiani.gmcapps.models.User
 import com.annaalfiani.gmcapps.utils.SingleLiveEvent

@@ -3,6 +3,7 @@
     package="com.annaalfiani.gmcapps">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -13,14 +14,19 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DetailMovieActivity"
+            android:label="@string/title_activity_detail_movie"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar"></activity>
+        <activity android:name=".DetailActivity" />
+        <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"></activity>
-        <activity android:name=".HomeActivity" />
+            android:label="@string/title_activity_main" />
+        <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Onboarding.OnboardingOneActivity" />
         <activity android:name=".Onboarding.Onbording_TwoActivity" />
         <activity android:name=".Onboarding.Onbording_TreeActivity" />
-        <activity android:name=".Sign_inActivity" />
-        <activity android:name=".Sign_UpActivity" />
+        <activity android:name=".sign.sign_in.Sign_inActivity" />
+        <activity android:name=".sign.sign_up.Sign_UpActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".IntroActivity" />
     </application>
 
 </manifest>

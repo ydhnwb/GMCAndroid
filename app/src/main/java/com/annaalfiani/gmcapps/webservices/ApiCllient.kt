@@ -1,6 +1,6 @@
 package com.annaalfiani.gmcapps.webservices
 
-import android.provider.ContactsContract
+import com.annaalfiani.gmcapps.models.Film
 import com.annaalfiani.gmcapps.models.User
 import com.google.gson.annotations.SerializedName
 import okhttp3.OkHttpClient
@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
@@ -17,7 +18,7 @@ class ApiCllient {
     //jadi tidak usah instansiate kelas baru unk menggunakannya
     companion object {
         private var retrofit : Retrofit? = null
-        private const val ENDPOINT = "https://resep-mau.herokuapp.com/"
+        private const val ENDPOINT = "https://gmcweb.herokuapp.com/"
         private var option = OkHttpClient.Builder().apply {
             connectTimeout(30, TimeUnit.SECONDS)
             readTimeout(30, TimeUnit.SECONDS)
@@ -50,6 +51,15 @@ interface ApiService {
     fun login(@Field("email") email: String,
               @Field("password")passord : String)
             : Call<WrappedResponse<User>>
+
+    @GET("api/film")
+    fun movies() : Call<WrappedListResponse<Film>>
+
+    @GET("api/film/nowplaying")
+    fun moviesNowPlaying() : Call<WrappedListResponse<Film>>
+
+    @GET("api/film/comingsoon")
+    fun moviesComingSoon() : Call<WrappedListResponse<Film>>
 }
 
 

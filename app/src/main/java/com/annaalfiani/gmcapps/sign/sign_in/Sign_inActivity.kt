@@ -1,4 +1,4 @@
-package com.annaalfiani.gmcapps
+package com.annaalfiani.gmcapps.sign.sign_in
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.annaalfiani.gmcapps.Home.HomeActivity
+import com.annaalfiani.gmcapps.R
 import com.annaalfiani.gmcapps.utils.Utilities
 import com.annaalfiani.gmcapps.viewmodels.UserState
 import com.annaalfiani.gmcapps.viewmodels.UserViewModel

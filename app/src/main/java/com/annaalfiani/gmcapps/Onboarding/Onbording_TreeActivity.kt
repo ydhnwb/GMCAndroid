@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.annaalfiani.gmcapps.MainActivity
 import com.annaalfiani.gmcapps.R
-import com.annaalfiani.gmcapps.Sign_inActivity
 import kotlinx.android.synthetic.main.activity_onbording__tree.*
-import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class Onbording_TreeActivity : AppCompatActivity() {
 

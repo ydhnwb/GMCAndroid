@@ -59,4 +59,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:3.12.4"
     implementation "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+    implementation 'com.synnapps:carouselview:0.1.4'
+    implementation "io.coil-kt:coil:0.11.0"
+    implementation 'com.github.AppIntro:AppIntro:6.0.0-alpha3'
 }

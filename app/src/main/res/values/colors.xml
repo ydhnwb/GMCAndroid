@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#151c25</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="calorDarkBlue">#08091D</color>
@@ -9,4 +9,6 @@
     <color name="calorBlueGray">#292A50</color>
     <color name="calorBlack">#050505</color>
     <color name="colorWhiteGray">#EEEDED</color>
+    <color name="colorGray">#B4A3A3</color>
+    <color name="text_light_blue">#2196F3</color>
 </resources>
