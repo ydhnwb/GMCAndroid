@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".TiketActivity"></activity>
         <activity
             android:name=".DetailMovieActivity"
             android:label="@string/title_activity_detail_movie"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity android:name=".DetailActivity" />
         <activity
             android:name=".MainActivity"

@@ -73,7 +73,6 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_cover" />
 
         <TextView
-            app:layout_constraintStart_toStartOf=""
             app:layout_constraintTop_toBottomOf="@id/detail_movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

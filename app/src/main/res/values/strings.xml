@@ -25,6 +25,17 @@
     <string name="Desciption">desc</string>
     <string name="movie_now_playing">Now playing</string>
     <string name="movie_coming_soon">Coming soon</string>
+    <string name="Batalkan">Batalkan</string>
+    <string name="bayar_sekarang">Bayar Sekarang</string>
+    <string name="datetime">Date and Time</string>
+    <string name="cinema">Cinema</string>
+    <string name="ewallet">E-Wallet</string>
+    <string name="pilih_bangku">Pilih Bangku</string>
+    <string name="beli_tiket">Beli Tiket</string>
+    <string name="checkout">Checkout</string>
+    <string name="when">When</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="totalbalance">Total Balance</string>
     <string name="simple_text">Contoh teks</string>
     <string name="title_activity_detail_movie">DetailMovieActivity</string>
     <string name="large_text">

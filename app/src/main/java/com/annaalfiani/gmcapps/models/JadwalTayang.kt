@@ -11,5 +11,6 @@ data class JadwalTayang(
     @SerializedName("tanggal_mulai") var tanggalMulai : String? = null,
     @SerializedName("tanggal_selesai") var tanggalSelesai : String? = null,
     @SerializedName("studio") var studio: Studio? = null,
-    @SerializedName("jam") var jams : List<Jam> = mutableListOf()
+    @SerializedName("jam") var jam : String? = null
+    //@SerializedName("jam") var jams : List<Jam> = mutableListOf()
 ) : Parcelable
