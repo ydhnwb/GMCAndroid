@@ -8,10 +8,27 @@
     tools:context=".DetailMovieActivity"
     tools:showIn="@layout/activity_detail_movie">
 
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        app:cardUseCompatPadding="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/calorWhite"
+                android:background="@color/calorDarkBlue"
+                android:id="@+id/sinopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.core.widget.NestedScrollView>

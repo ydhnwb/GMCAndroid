@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Studio(
+data class Kursi(
     @SerializedName("id") var id : Int? = null,
-    @SerializedName("nama_studio") var nama : String? = null,
-    @SerializedName("kursi") var kursi : List<Kursi> = mutableListOf()
+    @SerializedName("nama_kursi") var nama_kursi : String? = null
 ) : Parcelable
