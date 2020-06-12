@@ -1,5 +1,6 @@
 package com.annaalfiani.gmcapps
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import coil.api.load
@@ -20,6 +21,9 @@ class DetailActivity : AppCompatActivity() {
         detail_movie_tanggal.text = "${getPassedMovie()?.jadwalTayang!!.tanggalMulai} - ${getPassedMovie()?.jadwalTayang!!.tanggalSelesai}"
         detail_movie_jam.text = getPassedMovie()?.jadwalTayang!!.jam
 
+        btn_seat.setOnClickListener {
+            startActivity(Intent(this@DetailActivity, SeatActivity::class.java))
+        }
 
             val a = getPassedMovie()?.jadwalTayang?.studio?.kursi!!.map { k->
                 k.nama_kursi

@@ -7,10 +7,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 class ApiCllient {
@@ -52,6 +49,11 @@ interface ApiService {
               @Field("password")passord : String)
             : Call<WrappedResponse<User>>
 
+    @GET("api/profile")
+    fun profile(
+        @Header("Authorization") token : String
+    ) : Call<WrappedResponse<User>>
+
     @GET("api/film")
     fun movies() : Call<WrappedListResponse<Film>>
 
@@ -65,12 +67,12 @@ interface ApiService {
 
 data class WrappedResponse <T>(
     @SerializedName("message") var message : String,
-    @SerializedName("status") var status: String,
+    @SerializedName("status") var status: Boolean,
     @SerializedName("data") var data : T
 )
 
 data class WrappedListResponse <T>(
     @SerializedName("message") var message : String,
-    @SerializedName("status") var status: String,
+    @SerializedName("status") var status: Boolean,
     @SerializedName("data") var data : List<T>
 )

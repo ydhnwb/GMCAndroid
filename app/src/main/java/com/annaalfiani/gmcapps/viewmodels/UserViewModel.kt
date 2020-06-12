@@ -1,5 +1,6 @@
 package com.annaalfiani.gmcapps.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.annaalfiani.gmcapps.models.User
 import com.annaalfiani.gmcapps.utils.SingleLiveEvent
@@ -13,8 +14,11 @@ import retrofit2.Response
 class UserViewModel : ViewModel(){
     private var api = ApiCllient.instance()
     private var state : SingleLiveEvent<UserState> = SingleLiveEvent()
+    private var user = MutableLiveData<User>()
 
-    fun listenUIState() = state
+    private fun setLoading() { state.value = UserState.IsLoading(true) }
+    private fun hideLoading() { state.value = UserState.IsLoading(false) }
+    private fun toast(message: String) { state.value = UserState.ShowToast(message) }
 
     fun login(email : String, password : String) {
         state.value = UserState.IsLoading(true)
@@ -48,6 +52,28 @@ class UserViewModel : ViewModel(){
 
     }
 
+    fun profile(token : String){
+        setLoading()
+        api.profile(token).enqueue(object : Callback<WrappedResponse<User>>{
+            override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
+                println(t.message)
+                hideLoading()
+            }
+
+            override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {
+                if (response.isSuccessful){
+                    val body = response.body()
+                    if (body?.status!!){
+                        val data = body.data
+                        user.postValue(data)
+                    }
+                }
+                hideLoading()
+            }
+
+        })
+    }
+
     fun validateLogin(email: String, password: String) : Boolean{
         state.value = UserState.Reset
         if (!Utilities.isValidEmail(email)){
@@ -60,9 +86,10 @@ class UserViewModel : ViewModel(){
             return false
         }
         return true
-
-
     }
+
+    fun listenToState() = state
+    fun listenToUser() = user
 
 
 }

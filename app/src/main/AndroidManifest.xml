@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TiketActivity"></activity>
+        <activity android:name=".SeatActivity"></activity>
+        <activity android:name=".TiketActivity" />
         <activity
             android:name=".DetailMovieActivity"
             android:label="@string/title_activity_detail_movie"

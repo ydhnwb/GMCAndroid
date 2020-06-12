@@ -21,7 +21,7 @@ class Sign_inActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         doLogin()
-        userViewModel.listenUIState().observer(this, Observer {
+        userViewModel.listenToState().observer(this, Observer {
             handleState(it)
         })
     }
