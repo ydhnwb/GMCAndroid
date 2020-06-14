@@ -8,5 +8,5 @@ import kotlinx.android.parcel.Parcelize
 data class Studio(
     @SerializedName("id") var id : Int? = null,
     @SerializedName("nama_studio") var nama : String? = null,
-    @SerializedName("kursi") var kursi : List<Kursi> = mutableListOf()
+    @SerializedName("kursi") var kursi : Kursi? = null
 ) : Parcelable

@@ -3,10 +3,12 @@ package com.annaalfiani.gmcapps
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import coil.api.load
 import com.annaalfiani.gmcapps.models.Film
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail_movie.*
+import java.util.ArrayList
 
 class DetailActivity : AppCompatActivity() {
 
@@ -22,17 +24,12 @@ class DetailActivity : AppCompatActivity() {
         detail_movie_jam.text = getPassedMovie()?.jadwalTayang!!.jam
 
         btn_seat.setOnClickListener {
-            startActivity(Intent(this@DetailActivity, SeatActivity::class.java))
+            startActivity(Intent(this@DetailActivity, SeatActivity::class.java).apply {
+                getPassedMovie()?.let { movie ->
+                    putExtra("seat_info", movie.jadwalTayang?.studio?.kursi)
+                }
+            })
         }
-
-            val a = getPassedMovie()?.jadwalTayang?.studio?.kursi!!.map { k->
-                k.nama_kursi
-            }.toString()
-
-        println(a)
-
-
-
     }
 
     private fun getPassedMovie() : Film? = intent.getParcelableExtra("FILM")

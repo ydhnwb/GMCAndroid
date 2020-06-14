@@ -11,4 +11,5 @@
     <color name="colorWhiteGray">#EEEDED</color>
     <color name="colorGray">#B4A3A3</color>
     <color name="text_light_blue">#2196F3</color>
+    <color name="selected_seat_bg">#8F06BC00</color>
 </resources>
