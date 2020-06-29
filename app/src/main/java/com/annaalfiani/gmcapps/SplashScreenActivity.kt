@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.annaalfiani.gmcapps.Onboarding.OnboardingOneActivity
+import com.annaalfiani.gmcapps.ui.main.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.annaalfiani.gmcapps.ui.main.MainActivity
 import com.annaalfiani.gmcapps.utils.Utilities
 import com.github.paolorotolo.appintro.AppIntro2
 import com.github.paolorotolo.appintro.AppIntroFragment

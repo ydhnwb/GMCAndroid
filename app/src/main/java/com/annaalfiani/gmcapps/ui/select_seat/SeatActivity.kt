@@ -1,13 +1,12 @@
-package com.annaalfiani.gmcapps
+package com.annaalfiani.gmcapps.ui.select_seat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.annaalfiani.gmcapps.R
 import com.annaalfiani.gmcapps.models.Kursi
 import com.murgupluoglu.seatview.Seat
-import com.murgupluoglu.seatview.SeatViewConfig
 import com.murgupluoglu.seatview.SeatViewListener
 import kotlinx.android.synthetic.main.activity_seat.*
 

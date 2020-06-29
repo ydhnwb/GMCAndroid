@@ -1,4 +1,4 @@
-package com.annaalfiani.gmcapps.extenstions
+package com.annaalfiani.gmcapps.utils.extensions
 
 import android.view.View
 

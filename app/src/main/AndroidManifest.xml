@@ -13,22 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SeatActivity"></activity>
+        <activity android:name=".ui.select_seat.SeatActivity"></activity>
         <activity android:name=".TiketActivity" />
         <activity
             android:name=".DetailMovieActivity"
             android:label="@string/title_activity_detail_movie"
             android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".ui.detail_movie.DetailActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Onboarding.OnboardingOneActivity" />
         <activity android:name=".Onboarding.Onbording_TwoActivity" />
         <activity android:name=".Onboarding.Onbording_TreeActivity" />
-        <activity android:name=".sign.sign_in.Sign_inActivity" />
-        <activity android:name=".sign.sign_up.Sign_UpActivity" />
+        <activity android:name=".ui.login.SignInActivity" />
+        <activity android:name=".ui.register.SignUpActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

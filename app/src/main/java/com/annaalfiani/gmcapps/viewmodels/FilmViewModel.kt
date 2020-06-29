@@ -2,7 +2,7 @@ package com.annaalfiani.gmcapps.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.annaalfiani.gmcapps.models.Film
+import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.utils.SingleLiveEvent
 import com.annaalfiani.gmcapps.webservices.ApiCllient
 import com.annaalfiani.gmcapps.webservices.WrappedListResponse
@@ -13,8 +13,8 @@ import retrofit2.Response
 class FilmViewModel : ViewModel(){
     private val api = ApiCllient.instance()
     private val state : SingleLiveEvent<FilmState> = SingleLiveEvent()
-    private val comingSoonMovies = MutableLiveData<List<Film>>()
-    private val nowPlayingMovies = MutableLiveData<List<Film>>()
+    private val comingSoonMovies = MutableLiveData<List<Movie>>()
+    private val nowPlayingMovies = MutableLiveData<List<Movie>>()
 
     private fun setNowPlayingLoading() { state.value = FilmState.IsNowPlayingLoading(true) }
     private fun hideNowPlayingLoading() { state.value = FilmState.IsNowPlayingLoading(false) }
@@ -25,14 +25,14 @@ class FilmViewModel : ViewModel(){
 
     fun fetchComingSoonMovies() {
         setComingSoonLoading()
-        api.moviesComingSoon().enqueue(object : Callback<WrappedListResponse<Film>>{
-            override fun onFailure(call: Call<WrappedListResponse<Film>>, t: Throwable) {
+        api.moviesComingSoon().enqueue(object : Callback<WrappedListResponse<Movie>>{
+            override fun onFailure(call: Call<WrappedListResponse<Movie>>, t: Throwable) {
                 println(t.message)
                 hideComingSoonLoading()
                 toast(t.message.toString())
             }
 
-            override fun onResponse(call: Call<WrappedListResponse<Film>>, response: Response<WrappedListResponse<Film>>) {
+            override fun onResponse(call: Call<WrappedListResponse<Movie>>, response: Response<WrappedListResponse<Movie>>) {
                 if (response.isSuccessful){
                     val body = response.body()
                     comingSoonMovies.postValue(body?.data)
@@ -44,14 +44,14 @@ class FilmViewModel : ViewModel(){
 
     fun fetchNowPlayingMovies() {
         setNowPlayingLoading()
-        api.moviesNowPlaying().enqueue(object : Callback<WrappedListResponse<Film>>{
-            override fun onFailure(call: Call<WrappedListResponse<Film>>, t: Throwable) {
+        api.moviesNowPlaying().enqueue(object : Callback<WrappedListResponse<Movie>>{
+            override fun onFailure(call: Call<WrappedListResponse<Movie>>, t: Throwable) {
                 println(t.message)
                 hideNowPlayingLoading()
                 toast(t.message.toString())
             }
 
-            override fun onResponse(call: Call<WrappedListResponse<Film>>, response: Response<WrappedListResponse<Film>>) {
+            override fun onResponse(call: Call<WrappedListResponse<Movie>>, response: Response<WrappedListResponse<Movie>>) {
                 if (response.isSuccessful){
                     val body = response.body()
                     nowPlayingMovies.postValue(body?.data)

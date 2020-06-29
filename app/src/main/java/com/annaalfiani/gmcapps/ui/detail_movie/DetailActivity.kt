@@ -1,14 +1,14 @@
-package com.annaalfiani.gmcapps
+package com.annaalfiani.gmcapps.ui.detail_movie
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import coil.api.load
-import com.annaalfiani.gmcapps.models.Film
+import com.annaalfiani.gmcapps.R
+import com.annaalfiani.gmcapps.models.Movie
+import com.annaalfiani.gmcapps.ui.select_seat.SeatActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail_movie.*
-import java.util.ArrayList
 
 class DetailActivity : AppCompatActivity() {
 
@@ -32,5 +32,5 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPassedMovie() : Film? = intent.getParcelableExtra("FILM")
+    private fun getPassedMovie() : Movie? = intent.getParcelableExtra("FILM")
 }

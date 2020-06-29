@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annaalfiani.gmcapps.Adapter.FilmAdapter
 import com.annaalfiani.gmcapps.R
-import com.annaalfiani.gmcapps.models.Film
+import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.viewmodels.FilmState
 import com.annaalfiani.gmcapps.viewmodels.FilmViewModel
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -27,13 +27,13 @@ class HomeFragment : Fragment(R.layout.fragment_home){
         filmViewModel.fetchNowPlayingMovies()
     }
 
-    private fun handleComingSoonMovies(it : List<Film>){
+    private fun handleComingSoonMovies(it : List<Movie>){
         view!!.rv_comingsoon.adapter?.let { adapter -> if(adapter is FilmAdapter){
             adapter.updateList(it)
         }}
     }
 
-    private fun handleNowPlayingMovies(it : List<Film>){
+    private fun handleNowPlayingMovies(it : List<Movie>){
         view!!.rv_nowplaying.adapter?.let { adapter -> if(adapter is FilmAdapter){
             adapter.updateList(it)
         }}

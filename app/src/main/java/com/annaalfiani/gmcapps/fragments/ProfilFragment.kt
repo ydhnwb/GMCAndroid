@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annaalfiani.gmcapps.R
-import com.annaalfiani.gmcapps.extenstions.gone
-import com.annaalfiani.gmcapps.extenstions.visible
+import com.annaalfiani.gmcapps.utils.extensions.gone
+import com.annaalfiani.gmcapps.utils.extensions.visible
 import com.annaalfiani.gmcapps.models.User
 import com.annaalfiani.gmcapps.viewmodels.UserState
 import com.annaalfiani.gmcapps.viewmodels.UserViewModel

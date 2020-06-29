@@ -1,6 +1,6 @@
 package com.annaalfiani.gmcapps.webservices
 
-import com.annaalfiani.gmcapps.models.Film
+import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.models.User
 import com.google.gson.annotations.SerializedName
 import okhttp3.OkHttpClient
@@ -55,13 +55,13 @@ interface ApiService {
     ) : Call<WrappedResponse<User>>
 
     @GET("api/film")
-    fun movies() : Call<WrappedListResponse<Film>>
+    fun movies() : Call<WrappedListResponse<Movie>>
 
     @GET("api/film/nowplaying")
-    fun moviesNowPlaying() : Call<WrappedListResponse<Film>>
+    fun moviesNowPlaying() : Call<WrappedListResponse<Movie>>
 
     @GET("api/film/comingsoon")
-    fun moviesComingSoon() : Call<WrappedListResponse<Film>>
+    fun moviesComingSoon() : Call<WrappedListResponse<Movie>>
 }
 
 

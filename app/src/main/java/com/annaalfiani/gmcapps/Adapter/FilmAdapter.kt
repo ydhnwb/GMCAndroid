@@ -8,28 +8,28 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.annaalfiani.gmcapps.DetailActivity
+import com.annaalfiani.gmcapps.ui.detail_movie.DetailActivity
 import com.annaalfiani.gmcapps.R
-import com.annaalfiani.gmcapps.models.Film
+import com.annaalfiani.gmcapps.models.Movie
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
-class FilmAdapter (private var films : MutableList<Film>, private var context: Context) : RecyclerView.Adapter<FilmAdapter.ViewHolder>(){
+class FilmAdapter (private var movies : MutableList<Movie>, private var context: Context) : RecyclerView.Adapter<FilmAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_movie, parent, false))
     }
 
-    override fun getItemCount() = films.size
+    override fun getItemCount() = movies.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(films[position], context)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(movies[position], context)
 
-    fun updateList(it: List<Film>){
-        films.clear()
-        films.addAll(it)
+    fun updateList(it: List<Movie>){
+        movies.clear()
+        movies.addAll(it)
         notifyDataSetChanged()
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        fun bind(f : Film, context: Context){
+        fun bind(f : Movie, context: Context){
             with(itemView){
                 movie_poster.load("https://gmcweb.herokuapp.com/uploads/admin/"+f.foto)
                 movie_title.text = f.judul

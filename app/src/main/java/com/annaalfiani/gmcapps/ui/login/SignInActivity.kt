@@ -1,4 +1,4 @@
-package com.annaalfiani.gmcapps.sign.sign_in
+package com.annaalfiani.gmcapps.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,7 @@ import com.annaalfiani.gmcapps.viewmodels.UserState
 import com.annaalfiani.gmcapps.viewmodels.UserViewModel
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
-class Sign_inActivity : AppCompatActivity() {
+class SignInActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ class Sign_inActivity : AppCompatActivity() {
     private fun setErrorPassword(err : String?) { in_password.error = err }
     private fun handleState(it: UserState) {
         when(it){
-            is UserState.ShowToast -> Toast.makeText(this@Sign_inActivity, it.message, Toast.LENGTH_SHORT).show()
+            is UserState.ShowToast -> Toast.makeText(this@SignInActivity, it.message, Toast.LENGTH_SHORT).show()
             is UserState.IsLoading -> btn_login.isEnabled = !it.state
             is UserState.Reset -> {
                 setErrorEmail(null)
@@ -51,8 +51,8 @@ class Sign_inActivity : AppCompatActivity() {
                 it.password?.let { e -> setErrorPassword(e) }
             }
             is UserState.Success -> {
-                Utilities.setToken(this@Sign_inActivity, it.param)
-                startActivity(Intent(this@Sign_inActivity, HomeActivity::class.java))
+                Utilities.setToken(this@SignInActivity, it.param)
+                startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
                 finish()
             }
         }
@@ -60,8 +60,8 @@ class Sign_inActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if(Utilities.getToken(this@Sign_inActivity) != null){
-            startActivity(Intent(this@Sign_inActivity, HomeActivity::class.java))
+        if(Utilities.getToken(this@SignInActivity) != null){
+            startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
             finish()
         }
     }

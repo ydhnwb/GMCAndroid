@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Film (
+data class Movie (
     @SerializedName("id") var id: Int? = null,
     @SerializedName("foto") var foto: String? = null,
     @SerializedName("judul") var judul: String? = null,
