@@ -9,7 +9,6 @@ import coil.api.load
 import com.annaalfiani.gmcapps.R
 import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.models.MovieSchedule
-import com.annaalfiani.gmcapps.ui.select_seat.SeatActivity
 import com.annaalfiani.gmcapps.utils.Utilities
 import com.annaalfiani.gmcapps.utils.extensions.gone
 import com.annaalfiani.gmcapps.utils.extensions.showInfoAlert
@@ -25,8 +24,17 @@ class DetailActivity : AppCompatActivity(), DetailMovieInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        setSupportActionBar(toolbar)
+        setupToolbar()
         setupScheduleRecycler()
         observe()
+        fetchMovie()
+        fetchSchedule()
+    }
+
+    private fun setupToolbar(){
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.setNavigationOnClickListener { finish() }
 
     }
 
@@ -37,6 +45,8 @@ class DetailActivity : AppCompatActivity(), DetailMovieInterface {
         }
     }
 
+    private fun fetchMovie() = detailViewModel.fetchMovieDetail(getPassedMovie()?.id.toString())
+    private fun fetchSchedule() = detailViewModel.fetchMovieSchedule(getPassedMovie()?.id.toString())
 
     private fun getPassedMovie() : Movie? = intent.getParcelableExtra("FILM")
 
@@ -63,12 +73,10 @@ class DetailActivity : AppCompatActivity(), DetailMovieInterface {
     }
 
     private fun fill(movie: Movie){
-        detail_movie_img.load("https://gmcweb.herokuapp.com/uploads/admin/"+movie.foto)
+        detail_movie_img.load("https://img.harianjogja.com/posts/2020/04/27/1037832/money-heist-casa-de-papel.jpg")
         detail_movie_title.text = movie.judul
         detail_movie_genre.text = movie.genre
         sinopsis.text = movie.sinopsis
-        detail_movie_tanggal.text = "${getPassedMovie()?.jadwalTayang!!.tanggalMulai} - ${getPassedMovie()?.jadwalTayang!!.tanggalSelesai}"
-        detail_movie_jam.text = getPassedMovie()?.jadwalTayang!!.jam
     }
 
     private fun handleState(state: DetailState){

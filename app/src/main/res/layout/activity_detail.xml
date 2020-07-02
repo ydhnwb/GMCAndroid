@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".ui.detail_movie.DetailActivity">
 
 
@@ -24,37 +23,31 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <ImageView
-                    android:id="@+id/detail_movie_cover"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/gradient_bg"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/detail_movie_img"
                     android:layout_width="wrap_content"
-                    android:layout_height="245dp"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/gradient_bg"
-                    app:layout_constraintBottom_toBottomOf="@+id/detail_movie_cover"
-                    app:layout_constraintEnd_toEndOf="@+id/detail_movie_cover"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/detail_movie_cover" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/play_fab"
@@ -67,93 +60,14 @@
                     app:layout_constraintStart_toStartOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-                <ImageView
-                    android:id="@+id/detail_movie_img"
-                    android:layout_width="125dp"
-                    android:layout_height="175dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:scaleType="centerCrop"
-                    android:transitionName="sharedName"
-                    app:layout_constraintBottom_toBottomOf="@+id/detail_movie_cover"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_cover"
-                    app:srcCompat="@drawable/postermariposa" />
-
-                <TextView
-                    android:id="@+id/detail_movie_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="TextView"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_cover" />
-
-                <TextView
-                    android:id="@+id/detail_movie_genre"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="TextView"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_title" />
-
-                <TextView
-                    android:id="@+id/detail_movie_tanggal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="TextView"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_genre" />
-
-                <TextView
-                    android:id="@+id/detail_movie_jam"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="TextView"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_tanggal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_title" />
-
-                <TextView
-                    android:id="@+id/detail_movie_desc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:lineSpacingExtra="8dp"
-                    android:text="Sinopsis"
-                    android:textColor="@color/text_light_blue"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
