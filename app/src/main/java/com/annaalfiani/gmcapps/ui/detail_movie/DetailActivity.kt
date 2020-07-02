@@ -9,11 +9,13 @@ import coil.api.load
 import com.annaalfiani.gmcapps.R
 import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.models.MovieSchedule
+import com.annaalfiani.gmcapps.ui.order.OrderActivity
 import com.annaalfiani.gmcapps.utils.Utilities
 import com.annaalfiani.gmcapps.utils.extensions.gone
 import com.annaalfiani.gmcapps.utils.extensions.showInfoAlert
 import com.annaalfiani.gmcapps.utils.extensions.toast
 import com.annaalfiani.gmcapps.utils.extensions.visible
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail_movie.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,7 +43,7 @@ class DetailActivity : AppCompatActivity(), DetailMovieInterface {
     private fun setupScheduleRecycler(){
         detail_schedule_recyclerView.apply {
             layoutManager = LinearLayoutManager(this@DetailActivity)
-            adapter = MovieScheduleAdapter(mutableListOf(), this@DetailActivity)
+            adapter = SectionedRecyclerViewAdapter()
         }
     }
 
@@ -64,16 +66,18 @@ class DetailActivity : AppCompatActivity(), DetailMovieInterface {
         fill(movie)
     }
 
-    private fun handleSchedules(schedules: List<MovieSchedule>){
-        detail_schedule_recyclerView.adapter?.let { adapter ->
-            if(adapter is MovieScheduleAdapter){
-                adapter.updateList(schedules)
+    private fun handleSchedules(schedules: HashMap<String, List<MovieSchedule>>?){
+        schedules?.let {
+            val sectionedAdapter = SectionedRecyclerViewAdapter()
+            schedules.forEach { (t, u) -> sectionedAdapter.addSection(SectionScheduleAdapter(t, u, this@DetailActivity)) }
+            detail_schedule_recyclerView.apply {
+                adapter = sectionedAdapter
             }
         }
     }
 
     private fun fill(movie: Movie){
-        detail_movie_img.load("https://img.harianjogja.com/posts/2020/04/27/1037832/money-heist-casa-de-papel.jpg")
+        detail_movie_img.load("https://www.greenscene.co.id/wp-content/uploads/2020/04/Money-Heist-1.jpg")
         detail_movie_title.text = movie.judul
         detail_movie_genre.text = movie.genre
         sinopsis.text = movie.sinopsis
@@ -96,7 +100,10 @@ class DetailActivity : AppCompatActivity(), DetailMovieInterface {
 
     override fun itemClick(movie: MovieSchedule) {
         Utilities.getToken(this)?.let {
-            //go to order activity
+            startActivity(Intent(this@DetailActivity, OrderActivity::class.java).apply {
+                putExtra("SCHEDULE", movie)
+                putExtra("FILM", getPassedMovie())
+            })
         } ?: kotlin.run {
             showInfoAlert(resources.getString(R.string.please_login))
         }

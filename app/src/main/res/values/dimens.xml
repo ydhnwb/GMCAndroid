@@ -10,4 +10,5 @@
     <dimen name="margin_size_4">4dp</dimen>
     <dimen name="padding_size_16">16dp</dimen>
     <dimen name="text_size_big">18sp</dimen>
+    <dimen name="corner_size_6">6dp</dimen>
 </resources>

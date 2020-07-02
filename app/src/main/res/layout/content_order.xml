@@ -21,7 +21,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp">
                 <ImageView
-                    android:src="@drawable/ic_doodle_personalize"
+                    android:id="@+id/order_movie_poster"
                     android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

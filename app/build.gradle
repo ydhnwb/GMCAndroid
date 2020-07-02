@@ -66,4 +66,7 @@ dependencies {
     implementation 'com.github.murgupluoglu:seatview-android:1.0.0'
 
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
+
+    //sectioned
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.2.0'
 }

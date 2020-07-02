@@ -136,7 +136,7 @@
     <string name="error_email_notValid">Email tidak valid</string>
     <string name="error_password_notValid">Password setidaknya delapan karakter</string>
     <string name="phone">Phone</string>
-    <string name="title_activity_order">OrderActivity</string>
+    <string name="title_activity_order">Order</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

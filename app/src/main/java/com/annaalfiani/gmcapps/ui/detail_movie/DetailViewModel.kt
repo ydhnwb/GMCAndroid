@@ -12,7 +12,7 @@ import com.annaalfiani.gmcapps.utils.SingleResponse
 class DetailViewModel (private val movieRepo: MovieRepository): ViewModel(){
     private val state: SingleLiveEvent<DetailState> = SingleLiveEvent()
     private val movie = MutableLiveData<Movie>()
-    private val schedules = MutableLiveData<List<MovieSchedule>>()
+    private val schedules = MutableLiveData<HashMap<String, List<MovieSchedule>>>()
 
     private fun setLoading(){
         state.value = DetailState.Loading(true)
@@ -43,7 +43,10 @@ class DetailViewModel (private val movieRepo: MovieRepository): ViewModel(){
         movieRepo.movieSchedules(movieId, object :ArrayResponse<MovieSchedule> {
             override fun onSuccess(datas: List<MovieSchedule>?) {
                 hideLoading()
-                datas?.let { schedules.postValue(it) }
+                datas?.let {
+                    val temp = it.groupBy { s -> s.date.toString() } as HashMap<String, List<MovieSchedule>>
+                    schedules.postValue(temp)
+                }
             }
             override fun onFailure(err: Error) {
                 hideLoading()
