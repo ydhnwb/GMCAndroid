@@ -1,9 +1,10 @@
-package com.annaalfiani.gmcapps
+package com.annaalfiani.gmcapps.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.annaalfiani.gmcapps.R
 import com.annaalfiani.gmcapps.ui.main.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {

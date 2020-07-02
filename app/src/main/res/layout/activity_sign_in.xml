@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Onboarding.OnboardingOneActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_marginBottom="106dp"
@@ -63,20 +62,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-            <com.google.android.material.button.MaterialButton
-                android:id="@id/btn_daftar"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:backgroundTint="@color/calorBlue"
-                app:cornerRadius="26dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/shape_ractangle_bluegray"
-                android:text="@string/daftar_akun"
-                android:textColor="@color/calorWhite"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_login"
@@ -86,21 +72,28 @@
                 android:backgroundTint="@color/calorDarkBlue"
                 app:cornerRadius="26dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
                 android:background="@drawable/shape_ractangle_blue"
                 android:text="@string/masuk_akun"
                 android:textColor="@color/calorWhite"
                 app:layout_constraintBottom_toTopOf="@+id/btn_daftar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>>
+                app:layout_constraintStart_toStartOf="parent"/>
 
-
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@id/btn_daftar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/calorBlue"
+            app:cornerRadius="26dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shape_ractangle_bluegray"
+            android:text="@string/daftar_akun"
+            android:textColor="@color/calorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
-
-
-
-
-
 
 </RelativeLayout>

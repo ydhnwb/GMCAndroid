@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView"
@@ -14,7 +13,6 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="My Account"
-        android:textColor="@color/calorWhite"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="Anna Alfiani"
-        android:textColor="@color/calorWhite"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +35,6 @@
         android:layout_height="wrap_content"
         android:text="anna@gmail.com"
         android:textSize="24sp"
-        android:textColor="@color/calorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nama" />
@@ -54,7 +49,6 @@
         android:drawableRight="@drawable/ic_chevron_right_24dp"
         android:drawablePadding="250dp"
         android:text="@string/edit_profile"
-        android:textColor="@color/calorWhite"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_email" />
@@ -68,7 +62,6 @@
         android:drawableRight="@drawable/ic_chevron_right_24dp"
         android:drawablePadding="220dp"
         android:text="Riset Password"
-        android:textColor="@color/calorWhite"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit_profile"
@@ -83,7 +76,6 @@
         android:drawableRight="@drawable/ic_chevron_right_24dp"
         android:drawablePadding="277dp"
         android:text="Logout"
-        android:textColor="@color/calorWhite"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit_profile2"

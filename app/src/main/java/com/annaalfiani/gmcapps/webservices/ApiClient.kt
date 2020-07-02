@@ -42,27 +42,7 @@ class ApiCllient {
 }
 
 
-interface ApiService {
-    @FormUrlEncoded
-    @POST("api/login")
-    fun login(@Field("email") email: String,
-              @Field("password")passord : String)
-            : Call<WrappedResponse<User>>
 
-    @GET("api/profile")
-    fun profile(
-        @Header("Authorization") token : String
-    ) : Call<WrappedResponse<User>>
-
-    @GET("api/film")
-    fun movies() : Call<WrappedListResponse<Movie>>
-
-    @GET("api/film/nowplaying")
-    fun moviesNowPlaying() : Call<WrappedListResponse<Movie>>
-
-    @GET("api/film/comingsoon")
-    fun moviesComingSoon() : Call<WrappedListResponse<Movie>>
-}
 
 
 data class WrappedResponse <T>(

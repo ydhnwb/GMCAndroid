@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_margin="@dimen/margin_size_16"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="64dp"
+                android:layout_height="64dp">
+                <ImageView
+                    android:src="@drawable/ic_doodle_personalize"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_marginStart="@dimen/margin_size_16"
+                android:id="@+id/order_movieName_textView"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:maxLines="4"
+                android:text="@string/large_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_marginBottom="@dimen/margin_size_16"
+            android:layout_marginTop="@dimen/margin_size_16"
+            android:background="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:id="@+id/order_date_textView"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:text="@string/large_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/order_hour_textView"
+            android:textColor="@color/colorBlack"
+            android:maxLines="1"
+            android:text="@string/large_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/order_studio_textView"
+            android:textColor="@color/colorBlack"
+            android:maxLines="1"
+            android:text="@string/large_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginBottom="@dimen/margin_size_16"
+            android:layout_marginTop="@dimen/margin_size_16"
+            android:background="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+        <com.murgupluoglu.seatview.SeatView
+            xmlns:seatview="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/seatView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            seatview:centerLineActive="true"
+            seatview:centerLineColor="#e600ff"
+            seatview:centerLineWidth="2.8"
+            seatview:cinemaScreenViewActive="true"
+            seatview:cinemaScreenViewBackgroundColor="#F44336"
+            seatview:cinemaScreenViewSide="top"
+            seatview:cinemaScreenViewText="Cinema Screen"
+            seatview:cinemaScreenViewTextColor="#ffffff"
+            seatview:seatNamesBarActive="true"
+            seatview:seatViewBackgroundColor="#000000"
+            seatview:thumbSeatViewActive="true"
+            seatview:thumbSeatViewBackgroundColor="#bcb295"
+            seatview:thumbSeatViewPointerColor="#ffee00"
+            seatview:thumbSeatViewPointerWidth="10"
+            seatview:zoomActive="true"
+            seatview:zoomAfterClickActive="false" />
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

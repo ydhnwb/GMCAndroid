@@ -5,11 +5,11 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.annaalfiani.gmcapps.IntroActivity
+import com.annaalfiani.gmcapps.ui.intro.IntroActivity
 import com.annaalfiani.gmcapps.R
-import com.annaalfiani.gmcapps.fragments.HomeFragment
-import com.annaalfiani.gmcapps.fragments.ProfilFragment
-import com.annaalfiani.gmcapps.fragments.TicketFragment
+import com.annaalfiani.gmcapps.ui.main.home.HomeFragment
+import com.annaalfiani.gmcapps.ui.main.profile.ProfileFragment
+import com.annaalfiani.gmcapps.ui.main.ticket.TicketFragment
 import com.annaalfiani.gmcapps.utils.Utilities
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,19 +39,22 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.navigation_home -> {
                 if(navStatus != 0){
-                    fragment = HomeFragment()
+                    fragment =
+                        HomeFragment()
                     navStatus = 0
                 }
             }
             R.id.navigation_ticket -> {
                 if(navStatus != 1){
-                    fragment = TicketFragment()
+                    fragment =
+                        TicketFragment()
                     navStatus = 1
                 }
             }
             R.id.navigation_profil -> {
                 if(navStatus != 2){
-                    fragment = ProfilFragment()
+                    fragment =
+                        ProfileFragment()
                     navStatus = 2
                 }
             }

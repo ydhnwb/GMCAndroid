@@ -30,8 +30,8 @@ class Utilities {
 
         fun getToken(c : Context) : String? {
             val s = c.getSharedPreferences("USER", MODE_PRIVATE)
-            return "Bearer m3PcfE1iUh7vxQJ6bJZKjlUy6umZhiKIHwbzHKi0P79g2t4rSfFYz30fqPVLMsl1BxhYfnI4XEmEFvSr"
-//            return s?.getString("TOKEN", null)
+//            return "Bearer m3PcfE1iUh7vxQJ6bJZKjlUy6umZhiKIHwbzHKi0P79g2t4rSfFYz30fqPVLMsl1BxhYfnI4XEmEFvSr"
+            return s?.getString("TOKEN", null)
         }
 
         fun setToken(context: Context, token : String){
