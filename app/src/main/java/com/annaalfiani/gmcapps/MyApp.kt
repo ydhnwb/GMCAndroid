@@ -2,6 +2,7 @@ package com.annaalfiani.gmcapps
 
 import android.app.Application
 import com.annaalfiani.gmcapps.repositories.MovieRepository
+import com.annaalfiani.gmcapps.repositories.SeatRepository
 import com.annaalfiani.gmcapps.repositories.UserRepository
 import com.annaalfiani.gmcapps.ui.detail_movie.DetailViewModel
 import com.annaalfiani.gmcapps.ui.login.SignInViewModel
@@ -32,6 +33,7 @@ val retrofitModule = module {
 }
 val repositoryModule = module {
     factory { UserRepository(get()) }
+    factory { SeatRepository(get()) }
     factory { MovieRepository(get()) }
 }
 val viewModelModule = module {
@@ -39,5 +41,5 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get()) }
     viewModel { SignInViewModel(get()) }
     viewModel { DetailViewModel(get()) }
-    viewModel { OrderViewModel(get()) }
+    viewModel { OrderViewModel(get(), get()) }
 }

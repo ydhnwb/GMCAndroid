@@ -1,5 +1,6 @@
 package com.annaalfiani.gmcapps.webservices
 
+import com.annaalfiani.gmcapps.models.Kursi
 import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.models.MovieSchedule
 import com.annaalfiani.gmcapps.models.User
@@ -28,4 +29,10 @@ interface ApiService {
 
     @GET("api/film/{id}/jadwaltayang")
     fun movieSchedules(@Path("id") movieId: String) : Call<WrappedListResponse<MovieSchedule>>
+
+    @FormUrlEncoded
+    @POST("api/seat/available")
+    fun availableSeat(@Header("Authorization") token: String, @Field("tanggal") date : String,
+                      @Field("jam")hour : String, @Field("id_studio") studioId: String)
+            : Call<WrappedResponse<Kursi>>
 }

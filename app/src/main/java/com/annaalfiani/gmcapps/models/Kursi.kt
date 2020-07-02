@@ -15,5 +15,6 @@ data class Kursi(
 @Parcelize
 data class Seat(
     @SerializedName("id") var id: Int? = null,
-    @SerializedName("nama_kursi") var nama_kursi: String? = null
+    @SerializedName("nama_kursi") var nama_kursi: String? = null,
+    @SerializedName("status") var status : String? = null
 ) : Parcelable
