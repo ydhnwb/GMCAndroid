@@ -1,11 +1,16 @@
 package com.annaalfiani.gmcapps.ui.select_seat
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.os.Parcelable
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.annaalfiani.gmcapps.R
 import com.annaalfiani.gmcapps.models.Kursi
+import com.annaalfiani.gmcapps.utils.extensions.showInfoAlert
+import com.annaalfiani.gmcapps.utils.extensions.toast
 import com.murgupluoglu.seatview.Seat
 import com.murgupluoglu.seatview.SeatViewListener
 import kotlinx.android.synthetic.main.activity_seat.*
@@ -21,12 +26,20 @@ class SeatActivity : AppCompatActivity() {
         setSeatInfo()
         setupSeatView()
         setupSeatViewBehavior()
+        observeSelectedSeat()
+        done()
     }
 
     private fun setupViewModel(){
         seatActivityViewModel = ViewModelProvider(this).get(SeatActivityViewModel::class.java)
     }
 
+
+    private fun observeSelectedSeat() = seatActivityViewModel.getSelectedSeats().observe(this, Observer {
+        handleSelectedSeats(it)
+    })
+
+    private fun handleSelectedSeats(selectedSeats: List<com.annaalfiani.gmcapps.models.Seat>){}
 
     private fun setSeatInfo(){
         seatActivityViewModel.setSeatInfo(getSeats())
@@ -39,11 +52,13 @@ class SeatActivity : AppCompatActivity() {
         seatView.config.zoomAfterClickActive = true
         seatView.seatClickListener = object : SeatViewListener {
             override fun seatReleased(releasedSeat: Seat, selectedSeats: java.util.HashMap<String, Seat>) {
-                Toast.makeText(this@SeatActivity, "Released->" + releasedSeat.seatName, Toast.LENGTH_SHORT).show()
+                val seat = getSeats().seats.find { it.nama_kursi.equals(releasedSeat.seatName) }!!
+                seatActivityViewModel.releaseSeat(seat)
             }
 
             override fun seatSelected(selectedSeat: Seat, selectedSeats: java.util.HashMap<String, Seat>) {
-                Toast.makeText(this@SeatActivity, "Selected->" + selectedSeat.seatName, Toast.LENGTH_SHORT).show()
+                val seat = getSeats().seats.find { it.nama_kursi.equals(selectedSeat.seatName) }!!
+                seatActivityViewModel.addSelectedSeat(seat)
             }
 
             override fun canSelectSeat(clickedSeat: Seat, selectedSeats: java.util.HashMap<String, Seat>): Boolean {
@@ -93,6 +108,21 @@ class SeatActivity : AppCompatActivity() {
             seatArray[letterPosition.toInt()][numberOfSeat.toInt()-1] = movieSeat
         }
         return seatArray
+    }
+
+    private fun done(){
+        fab.setOnClickListener {
+            if (seatActivityViewModel.getSelectedSeats().value!!.isEmpty()){
+                showInfoAlert(resources.getString(R.string.no_seat_selected))
+            }else{
+                toast(seatActivityViewModel.getSelectedSeats().value!!.size.toString() + " kursi dipilih")
+                val i = Intent()
+                val selectedSeats = seatActivityViewModel.getSelectedSeats().value!!
+                i.putParcelableArrayListExtra("selected_seats",selectedSeats as ArrayList<out Parcelable>)
+                setResult(Activity.RESULT_OK, i)
+                finish()
+            }
+        }
     }
 
     private fun getHashMapKeyByValue(value: String): String {

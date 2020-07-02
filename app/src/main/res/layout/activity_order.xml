@@ -25,8 +25,8 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
-        android:enabled="false"
         android:text="@string/order"
+        android:id="@+id/btn_order"
         app:cornerRadius="@dimen/corner_size_16"
         android:layout_margin="@dimen/margin_size_16"
         android:layout_height="?attr/actionBarSize"/>

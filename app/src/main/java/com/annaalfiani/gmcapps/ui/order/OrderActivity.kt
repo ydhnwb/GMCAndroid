@@ -1,17 +1,27 @@
 package com.annaalfiani.gmcapps.ui.order
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import coil.api.load
 import com.annaalfiani.gmcapps.R
+import com.annaalfiani.gmcapps.models.Kursi
 import com.annaalfiani.gmcapps.models.Movie
 import com.annaalfiani.gmcapps.models.MovieSchedule
+import com.annaalfiani.gmcapps.models.Seat
+import com.annaalfiani.gmcapps.ui.select_seat.SeatActivity
+import com.annaalfiani.gmcapps.utils.Utilities
+import com.annaalfiani.gmcapps.utils.extensions.showInfoAlert
+import com.annaalfiani.gmcapps.utils.extensions.toast
 import kotlinx.android.synthetic.main.activity_order.*
 import kotlinx.android.synthetic.main.content_order.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrderActivity : AppCompatActivity() {
+    private val orderViewModel : OrderViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,12 +29,71 @@ class OrderActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         setupToolbar()
         fill()
+        observe()
+        fetchSeats()
     }
 
     private fun setupToolbar(){
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         toolbar.setNavigationOnClickListener { finish() }
     }
+
+    private fun fetchSeats(){
+        Utilities.getToken(this)?.let { orderViewModel.fetchSeats(it,
+            getPassedSchedule()?.date.toString(),
+            getPassedSchedule()?.hour.toString(),
+            getPassedSchedule()?.studio?.id.toString()
+        ) }
+    }
+
+    private fun observe(){
+        observeState()
+        observeSeats()
+        observeSelectedSeats()
+    }
+
+    private fun observeSeats() = orderViewModel.getSeats().observe(this, Observer { handleSeats(it) })
+    private fun observeState() = orderViewModel.getState().observer(this, Observer { handleState(it) })
+    private fun observeSelectedSeats() = orderViewModel.getSelectedSeats().observe(this, Observer { handleSelectedSeats(it)})
+
+    private fun handleState(it: OrderState){
+        when(it){
+            is OrderState.Loading -> isLoading(it.isLoading)
+            is OrderState.ShowToast -> toast(it.message)
+            is OrderState.Alert -> showInfoAlert(it.message)
+            is OrderState.Success -> finish()
+        }
+    }
+
+    private fun isLoading(b: Boolean){
+        btn_order.isEnabled = !b
+        order_button_select_seat.isEnabled = !b
+    }
+
+
+    private fun handleSeats(k: Kursi?){
+        k?.let {
+            selectSeatButtonClick(it)
+        }
+    }
+
+    private fun selectSeatButtonClick(kursi: Kursi){
+        order_button_select_seat.setOnClickListener {
+            startActivityForResult(Intent(this@OrderActivity, SeatActivity::class.java).apply {
+                putExtra("seat_info", kursi)
+            }, 89)
+        }
+    }
+
+    private fun handleSelectedSeats(it: List<Seat>){
+        order_selected_seats.text = if(it.isEmpty()) resources.getString(R.string.no_seat_selected) else it.joinToString { it.nama_kursi.toString() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
+
 
     private fun fill(){
         getPassedMovie()?.let {
@@ -38,4 +107,18 @@ class OrderActivity : AppCompatActivity() {
 
     private fun getPassedSchedule() = intent.getParcelableExtra<MovieSchedule>("SCHEDULE")
     private fun getPassedMovie() = intent.getParcelableExtra<Movie>("FILM")
+
+    private fun onSelectSeatsReturn(selectedSeats: List<Seat>){
+        orderViewModel.setSelectedSeats(selectedSeats)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 89 && resultCode == Activity.RESULT_OK && data != null){
+            val selectedSeats = data.getParcelableArrayListExtra<Seat>("selected_seats")
+            selectedSeats?.let {
+                onSelectSeatsReturn(it as List<Seat>)
+            }
+        }
+    }
 }

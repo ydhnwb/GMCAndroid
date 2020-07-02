@@ -8,8 +8,8 @@ import kotlinx.android.parcel.Parcelize
 data class Kursi(
     @SerializedName("id") var id : Int? = null,
     @SerializedName("total_rows") var totalRow : Int? = null,
-    @SerializedName("total_column") var totalColumn : Int? = null,
-    @SerializedName("seat") var seats : List<Seat> = mutableListOf()
+    @SerializedName("total_columns") var totalColumn : Int? = null,
+    @SerializedName("seats") var seats : List<Seat> = mutableListOf()
 ) : Parcelable
 
 @Parcelize

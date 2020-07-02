@@ -75,29 +75,28 @@
             android:background="@color/colorGray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
-
-
-        <com.murgupluoglu.seatview.SeatView
-            xmlns:seatview="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/seatView"
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:weightSum="1"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            seatview:centerLineActive="true"
-            seatview:centerLineColor="#e600ff"
-            seatview:centerLineWidth="2.8"
-            seatview:cinemaScreenViewActive="true"
-            seatview:cinemaScreenViewBackgroundColor="#F44336"
-            seatview:cinemaScreenViewSide="top"
-            seatview:cinemaScreenViewText="Cinema Screen"
-            seatview:cinemaScreenViewTextColor="#ffffff"
-            seatview:seatNamesBarActive="true"
-            seatview:seatViewBackgroundColor="#000000"
-            seatview:thumbSeatViewActive="true"
-            seatview:thumbSeatViewBackgroundColor="#bcb295"
-            seatview:thumbSeatViewPointerColor="#ffee00"
-            seatview:thumbSeatViewPointerWidth="10"
-            seatview:zoomActive="true"
-            seatview:zoomAfterClickActive="false" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Belum ada kursi dipilih"
+                android:id="@+id/order_selected_seats"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:textAllCaps="false"
+                android:text="@string/select_seat"
+                android:id="@+id/order_button_select_seat"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
     </LinearLayout>
 

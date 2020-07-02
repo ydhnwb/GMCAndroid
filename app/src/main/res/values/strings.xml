@@ -148,4 +148,5 @@
     <string name="order">Order</string>
     <string name="select_seat">Pilih kursi</string>
     <string name="please_login">Untuk dapat melakukan pesanan, anda harus login terlebih dahulu</string>
+    <string name="no_seat_selected">Tidak ada kursi yang dipilih</string>
 </resources>
