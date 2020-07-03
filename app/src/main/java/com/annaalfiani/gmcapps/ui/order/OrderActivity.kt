@@ -94,7 +94,6 @@ class OrderActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
-
     private fun fill(){
         getPassedMovie()?.let {
             order_movie_poster.load("https://www.greenscene.co.id/wp-content/uploads/2020/04/Money-Heist-1.jpg")
@@ -108,9 +107,7 @@ class OrderActivity : AppCompatActivity() {
     private fun getPassedSchedule() = intent.getParcelableExtra<MovieSchedule>("SCHEDULE")
     private fun getPassedMovie() = intent.getParcelableExtra<Movie>("FILM")
 
-    private fun onSelectSeatsReturn(selectedSeats: List<Seat>){
-        orderViewModel.setSelectedSeats(selectedSeats)
-    }
+    private fun onSelectSeatsReturn(selectedSeats: List<Seat>) = orderViewModel.setSelectedSeats(selectedSeats)
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
